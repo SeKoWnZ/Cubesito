@@ -6,10 +6,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		if (init_cube(&lil_cub))
-			return(1);
-		if (parse_map(&lil_cub, argv[1]))
-			return(1);
+		init_cube(&lil_cub);
+		parse_map(&lil_cub, argv[1]);
 	}
 	else
 	{
@@ -19,5 +17,5 @@ int	main(int argc, char **argv)
 	return(0);
 	//PARSEITO DEL MAPA;
 	//INICIO DE MLX Y RELLENARLA;
-	//LIMPIEZA DE TODO; 
+	//LIMPIEZA DE TODO;
 }
