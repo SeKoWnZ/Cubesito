@@ -1,5 +1,18 @@
 #include <cube3D.h>
 
+void	free_double_p(char **p)
+{
+	int	i;
+
+	i = 0;
+	while (p[i])
+	{
+		free(p[i]);
+		i++;
+	}
+	free(p);
+}
+
 void	free_it(t_cub *lil_cub)
 {
 	if (lil_cub->map)
