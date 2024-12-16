@@ -1,11 +1,10 @@
-SO ./path_to_the_south_texture
+SO ./perrete.png
 F 220,100,0
 
-EA ./path_to_the_east_texture
-C 225,30,0
-NO ./texturitas/paiaso
-
-WE ./texturitas/paiasa
+EA ./perrete.png
+C      225,30,0
+NO ./perrete.png
+WE ./perrete.png
 
 111111111111111111
 1000000000110000000000001

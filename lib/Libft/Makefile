@@ -6,7 +6,7 @@
 #    By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 12:39:44 by jose-gon          #+#    #+#              #
-#    Updated: 2024/12/04 17:13:05 by jose-gon         ###   ########.fr        #
+#    Updated: 2024/12/16 18:48:48 by jose-gon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ get_next_line.c \
 get_next_line_utils.c \
 ft_printf_utils.c \
 ft_printf.c \
-ft_strcat.c
+ft_strcat.c \
+ft_atoitoa_cmp.c
 
 FILES_BONUS = \
 ft_lstnew_bonus.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose-gon <jose-gon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:22:58 by jose-gon          #+#    #+#             */
-/*   Updated: 2024/05/27 14:03:14 by jose-gon         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:47:24 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char	*ft_strdup(const char *s1);
  * @return char* pointer to created string.
  */
 char	*ft_itoa(int n);
+int		ft_atoitoa_cmp(char *s1);
 /**
  * @brief locates the first occurrence of the null-ter-
      minated string needle in the string haystack, where not more than

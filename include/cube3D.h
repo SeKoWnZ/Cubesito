@@ -6,12 +6,6 @@
 #include <errno.h>
 #include <fcntl.h>
 
-typedef struct s_cub
-{
-	char		*map;
-	t_params	*params;
-}	t_cub;
-
 typedef struct s_params
 {
 	mlx_texture_t	*no;
@@ -22,6 +16,12 @@ typedef struct s_params
 	int				f;
 	char	**map;
 }	t_params;
+
+typedef struct s_cub
+{
+	char		*map;
+	t_params	*params;
+}	t_cub;
 
 //ERROR MSGS
 
