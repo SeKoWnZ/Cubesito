@@ -31,11 +31,16 @@ typedef struct s_cub
 #define E_OPEN "Error"
 #define E_EMPTY "Error: Map is empty\n"
 #define E_REP "Error: Repeated parameters\n"
+#define E_NLINE "Error: Empty line on map\n"
 
 //INIT STRUCT
 
 void	init_cube(t_cub *lil_cub);
 void	parse_map(t_cub *lil_cub, char *arg);
+
+//PARSE
+
+int	two_hi_n(char *map);
 
 //ERROR
 

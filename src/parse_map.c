@@ -50,6 +50,15 @@ int	save_color(int *c, char *color)
 	return(0);
 }
 
+int	check_all_in(t_params *params)
+{
+	if (!params->no || !params->so || !params->ea || !params->we)
+		return(1);
+	if (params->c == -1 || params->f == -1)
+		return(1);
+	return(0);
+}
+
 int	save_texture(mlx_texture_t **orientation, char *param)
 {
 	while (*param && *param == ' ')
@@ -71,31 +80,41 @@ int	save_texture(mlx_texture_t **orientation, char *param)
 	return(0);
 }
 
-int	check_all_in(t_cub *lil_cub, char **params)
+int save_params(t_cub *lil_cub, char **params)
+{
+	if (**params == 'N' && *(*params + 1) == 'O')
+		if (save_texture(&lil_cub->params->no, *params + 2))
+			return(1);
+	if (**params == 'S' && *(*params + 1) == 'O')
+		if (save_texture(&lil_cub->params->so, *params + 2))
+			return(1);
+	if (**params == 'E' && *(*params + 1) == 'A')
+		if (save_texture(&lil_cub->params->ea, *params + 2))
+			return(1);
+	if (**params == 'W' && *(*params + 1) == 'E')
+		if (save_texture(&lil_cub->params->we, *params + 2))
+			return(1);
+	if (**params == 'C')
+		if (save_color(&lil_cub->params->c, *params + 1))
+			return(1);
+	if (**params == 'F')
+		if (save_color(&lil_cub->params->f, *params + 1))
+			return(1);
+	return(0);
+}
+
+int	check_n_save(t_cub *lil_cub, char **params)
 {
 	while (params && !ft_strchr(" 10", **params))
 	{
-		ft_putstr_fd("parara\n", 2);
-		if (**params == 'N' && *(*params + 1) == 'O')
-			if (save_texture(&lil_cub->params->no, *params + 2))
-				return(1);
-		if (**params == 'S' && *(*params + 1) == 'O')
-			if (save_texture(&lil_cub->params->so, *params + 2))
-				return(1);
-		if (**params == 'E' && *(*params + 1) == 'A')
-			if (save_texture(&lil_cub->params->ea, *params + 2))
-				return(1);
-		if (**params == 'W' && *(*params + 1) == 'E')
-			if (save_texture(&lil_cub->params->we, *params + 2))
-				return(1);
-		if (**params == 'C')
-			if (save_color(&lil_cub->params->c, *params + 1))
-				return(1);
-		if (**params == 'F')
-			if (save_color(&lil_cub->params->f, *params + 1))
-				return(1);
+		if (save_params(lil_cub, params))
+			return(1);
 		params++;
 	}
+	if (check_all_in(lil_cub->params))
+		return(1);
+	if (valid_map(ESTO HAY QUE RELLENARLO))
+		return(1);
 	return(0);
 }
 
@@ -103,12 +122,15 @@ void	check_params(t_cub *lil_cub)
 {
 	char **params;
 
+	if (two_hi_n(lil_cub->map))
+		error_exit(E_NLINE, lil_cub);
 	params = ft_split(lil_cub->map, '\n');
-	if (check_all_in(lil_cub, params))
+	if (check_n_save(lil_cub, params))
 	{
 		free_double_p(params);
 		error_exit(E_REP, lil_cub);
 	}
+	free_double_p(params);
 }
 
 void read_map(t_cub *lil_cub, int fd)
