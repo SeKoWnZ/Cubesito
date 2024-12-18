@@ -6,6 +6,9 @@
 #include <errno.h>
 #include <fcntl.h>
 
+#define y 0
+#define x 1
+
 typedef struct s_params
 {
 	mlx_texture_t	*no;
@@ -14,7 +17,8 @@ typedef struct s_params
 	mlx_texture_t	*we;
 	int				c;
 	int				f;
-	char	**map;
+	int				max[2];
+	char			**map;
 }	t_params;
 
 typedef struct s_cub
@@ -41,6 +45,9 @@ void	parse_map(t_cub *lil_cub, char *arg);
 //PARSE
 
 int	two_hi_n(char *map);
+int	save_color(int *c, char *color);
+int	check_n_save(t_cub *lil_cub, char **params);
+int	valid_map(t_params *params, char **map);
 
 //ERROR
 
