@@ -56,4 +56,9 @@ void	parse_map(t_cub *lil_cub, char *arg)
 	check_params(lil_cub);
 	printf("%s\n", lil_cub->map); //quitarrr
 	printf("NO - %p\nSO - %p\nEA - %p\nWE - %p\nC - %i\nF - %i\nMAXy: %i\nMAXx: %i\n", lil_cub->params->no, lil_cub->params->so, lil_cub->params->ea, lil_cub->params->we, lil_cub->params->c, lil_cub->params->f, lil_cub->params->max[x], lil_cub->params->max[y]);
+	while (*lil_cub->params->map)
+	{
+		printf("%s|\n", *lil_cub->params->map);
+		lil_cub->params->map++;
+	}
 }

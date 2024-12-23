@@ -6,7 +6,8 @@ FLAGS = -g -Wall -Wextra -Werror -I./include/
 LFLAGS = -L$(LIBFT) -lft -L$(MLX)/build -lmlx42 -Iinclude -lglfw -ldl -pthread -lm -no-pie#-L"/Users/jose-gon/.brew/opt/glfw/lib/" 
 #LFLAGS = -L$(LIBFT) -lft -L$(MLX) -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
 
-FILES = cube3D.c init_cub.c parse_map.c valid_map.c parse_color.c parse_check.c error.c
+FILES = cube3D.c init_cub.c parse_map.c valid_map.c parse_color.c parse_check.c error.c \
+square_map.c
 
 #B_FILES =
 

@@ -5,8 +5,8 @@ int	ok_char(char *map, int *lil_player, int *max_x)
 	{
 		if (!ft_strchr(" 10NSEW", *map))
 			return(1);
-		if (!ft_strchr("NSEW", *map))
-			lil_player++;
+		if (ft_strchr("NSEW", *map))
+			(*lil_player)++;
 		(*max_x)++;
 		map++;
 	}
@@ -36,8 +36,9 @@ int	size_n_char(t_params *params, char **map)
 int	 valid_map(t_params *params, char **map)
 {
 	if (size_n_char(params, map))
-		return(0);
-	//añadir espacios
+		return(1);
+	if (square_map(params, map))
+		return(1);
 	//guardar
 	return(0);
 }

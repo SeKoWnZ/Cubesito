@@ -48,6 +48,7 @@ int	two_hi_n(char *map);
 int	save_color(int *c, char *color);
 int	check_n_save(t_cub *lil_cub, char **params);
 int	valid_map(t_params *params, char **map);
+int	square_map(t_params *params, char **map);
 
 //ERROR
 
