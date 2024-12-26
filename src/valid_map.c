@@ -1,4 +1,32 @@
 #include <cube3D.h>
+
+int	valid_walls(t_params *params)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = i;
+	while (params->map[j])
+	{
+		i = 0;
+		while (params->map[j][i])
+		{
+			if (params->map[j][i] == '0' || params->map[j][i] == 'N' || params->map[j][i] == 'S' || params->map[j][i] == 'E' || params->map[j][i] == 'W')
+			{
+				if ((i == 0 || (params->map[j][i - 1] == ' ' || !params->map[j][i + 1] || params->map[j][i + 1] == ' ')))
+					return(1);
+				if ((j == 0 || (!params->map[j + 1] || params->map[j - 1][i] == ' ' || params->map[j + 1][i] == ' ')))
+					return(1);
+			}
+			i++;
+		}
+		printf("LINEA %d - cantidad %d\n", j, i);
+		j++;
+	}
+	return(0);
+}
+
 int	ok_char(char *map, int *lil_player, int *max_x)
 {
 	while (*map)
@@ -39,6 +67,10 @@ int	 valid_map(t_params *params, char **map)
 		return(1);
 	if (square_map(params, map))
 		return(1);
-	//guardar
+	if (valid_walls(params))
+	{
+		printf("PATATA FUNCIONA\n");
+		return(1);
+	}
 	return(0);
 }
