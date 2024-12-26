@@ -8,6 +8,8 @@
 
 #define y 0
 #define x 1
+#define W_WIDTH 800
+#define W_HEIGHT 600
 
 typedef struct s_params
 {
@@ -25,6 +27,7 @@ typedef struct s_cub
 {
 	char		*map;
 	t_params	*params;
+	mlx_t		*mlx;
 }	t_cub;
 
 //ERROR MSGS
@@ -36,6 +39,7 @@ typedef struct s_cub
 #define E_EMPTY "Error: Map is empty\n"
 #define E_REP "Error: Repeated parameters\n"
 #define E_NLINE "Error: Empty line on map\n"
+#define E_MLX "Error"
 
 //INIT STRUCT
 

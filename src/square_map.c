@@ -6,12 +6,12 @@ int	square_map(t_params *params, char **map)
 	int		extra;
 
 	i = -1;
-	params->map = calloc(params->max[y], sizeof(char *));
+	params->map = ft_calloc(params->max[y] + 1, sizeof(char *));
 	if (!params->map)
 		return(1);
 	while (++i < params->max[y])
 	{
-		params->map[i] = calloc(params->max[x], sizeof(char));
+		params->map[i] = ft_calloc(params->max[x] + 1, sizeof(char));
 			if (!params->map[i])
 				return(1);
 		extra = ft_strlen(map[i]);
