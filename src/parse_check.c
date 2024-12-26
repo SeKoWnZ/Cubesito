@@ -68,7 +68,6 @@ int save_params(t_cub *lil_cub, char **params)
 		if (save_color(&lil_cub->params->f, *params + 1))
 			return(1);
 	return(0);
-	mlx_texture_t
 }
 
 int	check_n_save(t_cub *lil_cub, char **params)
