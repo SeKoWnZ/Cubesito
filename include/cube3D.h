@@ -41,10 +41,16 @@ typedef struct s_cub
 #define E_NLINE "Error: Empty line on map\n"
 #define E_MLX "Error"
 
-//INIT STRUCT
+//INIT FUNCT
 
 void	init_cube(t_cub *lil_cub);
 void	parse_map(t_cub *lil_cub, char *arg);
+
+//MLX THINGS
+
+int		mlx_initialize(t_cub *cube);
+void	mlx_run(t_cub *lil_cub);
+void	cube_it(t_cub *cub);
 
 //PARSE
 
@@ -53,6 +59,10 @@ int	save_color(int *c, char *color);
 int	check_n_save(t_cub *lil_cub, char **params);
 int	valid_map(t_params *params, char **map);
 int	square_map(t_params *params, char **map);
+
+//KEYS
+
+void	key_controls(void *param);
 
 //ERROR
 

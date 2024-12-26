@@ -56,7 +56,8 @@ int	save_color(int *c, char *color)
 	if (*c != -1)
 		return (1);
 	while (*color && *color == ' ')
-	color++;
+		color++;
+	printf("COLORESSSSS -%s\n", color);
 	if (color_allnums_ok(color))
 		return(1);
 	nums = ft_split(color, ',');

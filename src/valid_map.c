@@ -12,16 +12,18 @@ int	valid_walls(t_params *params)
 		i = 0;
 		while (params->map[j][i])
 		{
-			if (params->map[j][i] == '0' || params->map[j][i] == 'N' || params->map[j][i] == 'S' || params->map[j][i] == 'E' || params->map[j][i] == 'W')
+			if (ft_strchr("WEN0S", params->map[j][i]))
 			{
-				if ((i == 0 || (params->map[j][i - 1] == ' ' || !params->map[j][i + 1] || params->map[j][i + 1] == ' ')))
+				if ((i == 0 || (params->map[j][i - 1] == ' '
+					|| !params->map[j][i + 1] || params->map[j][i + 1] == ' ')))
 					return(1);
-				if ((j == 0 || (!params->map[j + 1] || params->map[j - 1][i] == ' ' || params->map[j + 1][i] == ' ')))
+				if ((j == 0 || (!params->map[j + 1]
+					|| params->map[j - 1][i] == ' '
+					|| params->map[j + 1][i] == ' ')))
 					return(1);
 			}
 			i++;
 		}
-		printf("LINEA %d - cantidad %d\n", j, i);
 		j++;
 	}
 	return(0);

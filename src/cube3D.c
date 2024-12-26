@@ -8,7 +8,7 @@ int	main(int argc, char **argv)
 	{
 		init_cube(&lil_cub);
 		parse_map(&lil_cub, argv[1]);
-		mlx_initialize(&lil_cub);
+		mlx_run(&lil_cub);
 	}
 	else
 	{
