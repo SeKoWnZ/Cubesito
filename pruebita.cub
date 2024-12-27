@@ -1,9 +1,9 @@
 SO ./perrete.png
-F 250,0,0
+F  42,231,0
 
 EA ./perrete.png
 
-C      250,0,0
+C      0,98,241
 NO ./perrete.png
 WE ./perrete.png
 

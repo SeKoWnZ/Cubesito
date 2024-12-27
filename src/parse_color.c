@@ -34,7 +34,7 @@ int color_set(char **nums, int rgb[3])
 		i++;
 	if (i != 3)
 		return (1);
-	while (--i > 0)
+	while (--i >= 0)
 	{
 		if (!ft_atoitoa_cmp(nums[i]))
 		{
@@ -57,7 +57,6 @@ int	save_color(int *c, char *color)
 		return (1);
 	while (*color && *color == ' ')
 		color++;
-	printf("COLORESSSSS -%s\n", color);
 	if (color_allnums_ok(color))
 		return(1);
 	nums = ft_split(color, ',');
@@ -69,6 +68,7 @@ int	save_color(int *c, char *color)
 		return(1);
 	}
 	free_double_p(nums);
-	*c = get_rgba(rgb[0], rgb[1], rgb[3], 255);
+	printf("COLORINCHI 0 = %d\nCOLORINCHI 1 = %d\nCOLORINCHI 2 = %d\nCOLORINCHI 3 = %d\n", rgb[0], rgb[1], rgb[2], rgb[3]);
+	*c = get_rgba(rgb[0], rgb[1], rgb[2], 255);
 	return(0);
 }
