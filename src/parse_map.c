@@ -7,11 +7,9 @@ void	check_params(t_cub *lil_cub)
 	if (two_hi_n(lil_cub->map))
 		error_exit(E_NLINE, lil_cub);
 	params = ft_split(lil_cub->map, '\n');
-	if (check_n_save(lil_cub, params))
-	{
-		free_double_p(params);
-		error_exit(E_REP, lil_cub);
-	}
+	if (!params)
+		error_exit(E_MALLOC, lil_cub);
+	check_n_save(lil_cub, params, params);
 	free_double_p(params);
 }
 

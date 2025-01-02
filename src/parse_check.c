@@ -70,17 +70,17 @@ int save_params(t_cub *lil_cub, char **params)
 	return(0);
 }
 
-int	check_n_save(t_cub *lil_cub, char **params)
+int	check_n_save(t_cub *lil_cub, char **params, char **free_p)
 {
 	while (params && !ft_strchr(" 10", **params))
 	{
 		if (save_params(lil_cub, params))
-			return(1);
+			error_free(E_PARAM, lil_cub, free_p);
 		params++;
 	}
 	if (check_all_in(lil_cub->params))
-		return(1);
+		error_free(E_MISS, lil_cub, free_p);
 	if (valid_map(lil_cub->params, params))
-		return(1);
+		error_free(E_MAP, lil_cub, free_p);
 	return(0);
 }

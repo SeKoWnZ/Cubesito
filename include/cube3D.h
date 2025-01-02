@@ -33,12 +33,15 @@ typedef struct s_cub
 //ERROR MSGS
 
 #define E_ARGS "Error: Invalid number of args\n"
+#define E_PARAM "Error: Invalid parameters\n"
+#define E_MISS "Error: Missing parameters\n"
+#define E_MAP "Error: The map parameters are incorrect\n"
 #define E_FORMAT "Error: Invalid map format\n"
 #define E_MALLOC "Error"
 #define E_OPEN "Error"
 #define E_EMPTY "Error: Map is empty\n"
 #define E_REP "Error: Repeated parameters\n"
-#define E_NLINE "Error: Empty line on map\n"
+#define E_NLINE "Error: Empty line on map or space on param\n"
 #define E_MLX "Error"
 
 //INIT FUNCT
@@ -56,7 +59,7 @@ void	cube_it(t_cub *cub);
 
 int	two_hi_n(char *map);
 int	save_color(int *c, char *color);
-int	check_n_save(t_cub *lil_cub, char **params);
+int	check_n_save(t_cub *lil_cub, char **params, char **free_p);
 int	valid_map(t_params *params, char **map);
 int	square_map(t_params *params, char **map);
 
@@ -67,6 +70,7 @@ void	key_controls(void *param);
 //ERROR
 
 int		error_exit(char *error, t_cub *cub);
+int		error_free(char *error, t_cub *lil_cub, char **free_p);
 
 //FREE
 
