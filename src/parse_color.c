@@ -68,7 +68,6 @@ int	save_color(int *c, char *color)
 		return(1);
 	}
 	free_double_p(nums);
-	printf("COLORINCHI 0 = %d\nCOLORINCHI 1 = %d\nCOLORINCHI 2 = %d\nCOLORINCHI 3 = %d\n", rgb[0], rgb[1], rgb[2], rgb[3]);
 	*c = get_rgba(rgb[0], rgb[1], rgb[2], 255);
 	return(0);
 }
