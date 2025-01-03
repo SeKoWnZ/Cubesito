@@ -5,6 +5,7 @@
 #include <MLX42.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <math.h>
 
 #define y 0
 #define x 1
@@ -23,11 +24,21 @@ typedef struct s_params
 	char			**map;
 }	t_params;
 
+typedef struct s_player
+{
+	float		pox;
+	float		poy;
+	double		pang;
+}	t_player;
+
+
+
 typedef struct s_cub
 {
+	mlx_t		*mlx;
 	char		*map;
 	t_params	*params;
-	mlx_t		*mlx;
+	t_player	*player;
 }	t_cub;
 
 //ERROR MSGS
@@ -47,6 +58,7 @@ typedef struct s_cub
 //INIT FUNCT
 
 void	init_cube(t_cub *lil_cub);
+void	init_player(t_cub *lil_cub);
 void	parse_map(t_cub *lil_cub, char *arg);
 
 //MLX THINGS
@@ -57,11 +69,11 @@ void	cube_it(t_cub *cub);
 
 //PARSE
 
-int	two_hi_n(char *map);
-int	save_color(int *c, char *color);
-int	check_n_save(t_cub *lil_cub, char **params, char **free_p);
-int	valid_map(t_params *params, char **map);
-int	square_map(t_params *params, char **map);
+int		two_hi_n(char *map);
+int		save_color(int *c, char *color);
+int		check_n_save(t_cub *lil_cub, char **params, char **free_p);
+int		valid_map(t_params *params, char **map);
+int		square_map(t_params *params, char **map);
 
 //KEYS
 

@@ -70,9 +70,6 @@ int	 valid_map(t_params *params, char **map)
 	if (square_map(params, map))
 		return(1);
 	if (valid_walls(params))
-	{
-		printf("PATATA FUNCIONA\n");
 		return(1);
-	}
 	return(0);
 }
