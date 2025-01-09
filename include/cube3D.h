@@ -69,7 +69,8 @@ void	cube_it(t_cub *cub);
 
 //RAY THINGS
 
-void	raycast(t_cub *cub, mlx_image_t *frame);
+double	rad_convertor(double deg);
+void	raycast(t_cub *cub, mlx_image_t *frame, int *i);
 
 //PARSE
 

@@ -28,7 +28,7 @@ void	cube_it(t_cub *cub)
 	{
 		ceilingfloor(cub, frame, &i);
 		if (i == W_WIDTH/2)
-			raycast(cub, frame);
+			raycast(cub, frame, &i);
 		i++;
 	}
 	mlx_image_to_window(cub->mlx, frame, 0, 0);
