@@ -1,33 +1,35 @@
 #include <cube3D.h>
 
-void	cube_it(t_cub *cub)
+void	ceilingfloor(t_cub *cub, mlx_image_t *frame, int *i)
 {
-	int i;
-	int j;
+	int	j;
 
-	i = 0;
 	j = 0;
-	mlx_image_t *frame;
-	frame = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
 	while (j < W_HEIGHT/2)
 	{
-		i = 0;
-		while (i < W_WIDTH)
-		{
-			mlx_put_pixel(frame, i, j, cub->params->c);
-			i++;
-		}
+		mlx_put_pixel(frame, *i, j, cub->params->c);
 		j++;
 	}
 	while (j < W_HEIGHT)
 	{
-		i = 0;
-		while (i < W_WIDTH)
-		{
-			mlx_put_pixel(frame, i, j, cub->params->f);
-			i++;
-		}
+		mlx_put_pixel(frame, *i, j, cub->params->f);
 		j++;
+	}
+}
+
+void	cube_it(t_cub *cub)
+{
+	int i;
+
+	i = 0;
+	mlx_image_t *frame;
+	frame = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
+	while(i < W_WIDTH)
+	{
+		ceilingfloor(cub, frame, &i);
+		if (i == W_WIDTH/2)
+			raycast(cub, frame);
+		i++;
 	}
 	mlx_image_to_window(cub->mlx, frame, 0, 0);
 }

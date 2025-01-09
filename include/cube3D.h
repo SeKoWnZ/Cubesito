@@ -67,6 +67,10 @@ int		mlx_initialize(t_cub *cube);
 void	mlx_run(t_cub *lil_cub);
 void	cube_it(t_cub *cub);
 
+//RAY THINGS
+
+void	raycast(t_cub *cub, mlx_image_t *frame);
+
 //PARSE
 
 int		two_hi_n(char *map);
