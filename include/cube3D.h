@@ -31,8 +31,6 @@ typedef struct s_player
 	double		pang;
 }	t_player;
 
-
-
 typedef struct s_cub
 {
 	mlx_t		*mlx;
