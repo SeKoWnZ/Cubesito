@@ -31,6 +31,23 @@ typedef struct s_player
 	double		pang;
 }	t_player;
 
+typedef struct s_lil_ray
+{
+	float	cross[2];
+	double	dis;
+}	t_lil_ray;
+
+typedef struct s_ray
+{
+	char **		map;
+	float		pos[2];
+	double		ang;
+	int			signx;
+	int			signy;
+	t_lil_ray	x_ray;
+	t_lil_ray	y_ray;
+}	t_ray;
+
 typedef struct s_cub
 {
 	mlx_t		*mlx;
