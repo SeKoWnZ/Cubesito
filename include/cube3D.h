@@ -34,6 +34,7 @@ typedef struct s_player
 typedef struct s_lil_ray
 {
 	float	cross[2];
+	float	step[2];
 	double	dis;
 }	t_lil_ray;
 
@@ -44,8 +45,7 @@ typedef struct s_ray
 	double		ang;
 	int			signx;
 	int			signy;
-	t_lil_ray	x_ray;
-	t_lil_ray	y_ray;
+	t_lil_ray	ray[2];
 }	t_ray;
 
 typedef struct s_cub

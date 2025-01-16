@@ -2,5 +2,6 @@
 	"files.associations": {
 		"random": "c",
 		"limits": "c"
-	}
+	},
+	"cmake.sourceDirectory": "/home/seko/Cursus/Cubesito/lib/MLX42"
 }
