@@ -8,8 +8,14 @@ void	first_step(t_ray *rey, float *r_pos, int r)
 			rey->ray[x].cross[x] = ((int)r_pos[x] + 1) - r_pos[x];
 		else
 			rey->ray[x].cross[x] = (int)r_pos[x] - r_pos[x];
-		rey->ray[x].cross[y] = rey->ray[x].cross[x] / tan(rey->ang);
-		rey->ray[x].cross[y] = rey->ray[x].cross[y] + r_pos[y];
+		if (rey->ang == rad_convertor(0) || rey->ang == rad_convertor(180))
+			rey->ray[x].cross[y] = r_pos[y];
+		else
+		{
+			rey->ray[x].cross[y] = rey->ray[x].cross[x] / tan(rey->ang);
+			rey->ray[x].cross[y] = rey->ray[x].cross[y] + r_pos[y];
+		}
+		rey->ray[x].cross[x] = rey->ray[x].cross[x] + r_pos[x];
 	}
 	else
 	{
@@ -17,15 +23,21 @@ void	first_step(t_ray *rey, float *r_pos, int r)
 			rey->ray[y].cross[y] = ((int)r_pos[y] + 1) - r_pos[y];
 		else
 			rey->ray[y].cross[y] = (int)r_pos[y] - r_pos[y];
-		rey->ray[y].cross[x] = rey->ray[y].cross[y] * tan(rey->ang);
-		rey->ray[y].cross[x] = rey->ray[y].cross[x] + r_pos[x];
+		if (rey->ang == rad_convertor(90) || rey->ang == rad_convertor(270))
+			rey->ray[y].cross[x] = r_pos[x];
+		else
+		{
+			rey->ray[y].cross[x] = rey->ray[y].cross[y] * tan(rey->ang);
+			rey->ray[y].cross[x] = rey->ray[y].cross[x] + r_pos[x];
+		}
+			rey->ray[y].cross[y] = rey->ray[y].cross[y] + r_pos[y];
 	}
 }
 
 int	ray_collide(t_ray *rey, t_params *param, int r)
 {
 	printf("RAY (y=%f, x=%f)\n", rey->ray[r].cross[y], rey->ray[r].cross[x]);
-	if (rey->ray[r].cross[x] > param->max[x] || rey->ray[r].cross[y] > param->max[y] || rey->ray[r].cross[x] < 0 || rey->ray[r].cross[y] < 0)
+	if (rey->ray[r].cross[x] >= param->max[x] || rey->ray[r].cross[y] >= param->max[y] || rey->ray[r].cross[x] < 0 || rey->ray[r].cross[y] < 0)
 		return (1);
 	if (rey->map[(int)rey->ray[r].cross[y]][(int)rey->ray[r].cross[x]] == '1')
 		return (1);
@@ -36,6 +48,8 @@ int	ray_collide(t_ray *rey, t_params *param, int r)
 void	calculate_ray(t_ray *rey, float *r_pos, t_params *param, int r)
 {
 	first_step(rey, r_pos, r);
+	printf("PLAYER Y :%f | PLAYER X :%f\n", rey->pos[y], rey->pos[x]);
+	printf("CROSS Y :%f | CROSS X :%f\n", rey->ray[r].cross[y], rey->ray[r].cross[x]);
 	while (1)
 	{
 		if (ray_collide(rey, param, r))
@@ -43,6 +57,8 @@ void	calculate_ray(t_ray *rey, float *r_pos, t_params *param, int r)
 	rey->ray[r].cross[x] += rey->ray[r].step[x];
 	rey->ray[r].cross[y] += rey->ray[r].step[y];
 	}
+	rey->ray[r].dis = sqrt(pow(rey->ray[r].cross[x] - rey->pos[x], 2) + pow(rey->ray[r].cross[y] - rey->pos[y], 2));
+	//coll.distance = coll.raylen * cos(ray->deltaang);
 }
 void	raycast(t_cub *cub, mlx_image_t *frame, int *i)
 {
@@ -61,15 +77,27 @@ void	raycast(t_cub *cub, mlx_image_t *frame, int *i)
 	if (rey.ang > rad_convertor(180) && rey.ang < rad_convertor(360))
 		rey.signy = -1;
 	rey.ray[x].step[x] = rey.signx;
-	rey.ray[x].step[y] = rey.ray[y].cross[y] * tan(rey.ang);
-	rey.ray[y].step[x] = rey.ray[x].cross[y] / tan(rey.ang);
 	rey.ray[y].step[y] = rey.signy;
+	rey.ray[x].step[y] = rey.signy * tan(rey.ang);
+	rey.ray[y].step[x] = rey.signx / tan(rey.ang);
+	if (rey.ang == rad_convertor(0) || rey.ang == rad_convertor(180))
+	{
+		rey.ray[x].step[y] = 0;
+		rey.ray[y].dis = __FLT_MAX__;
+	}
+	if (rey.ang == rad_convertor(90) || rey.ang == rad_convertor(270))
+	{
+		rey.ray[y].step[x] = 0;
+		rey.ray[x].dis = __FLT_MAX__;
+	}
 	printf("SING X: %i\nSING Y: %i\n", rey.signx, rey.signy);
-	calculate_ray(&rey, rey.pos, cub->params, x);
-	calculate_ray(&rey, rey.pos, cub->params, y);
+	if (rey.ray[x].dis != __FLT_MAX__)
+		calculate_ray(&rey, rey.pos, cub->params, x);
+	if (rey.ray[y].dis != __FLT_MAX__)
+		calculate_ray(&rey, rey.pos, cub->params, y);
 	printf("RAY Y (y=%f, x=%f)\nRAY X (y=%f, x=%f)\n", rey.ray[y].cross[y], rey.ray[y].cross[x], rey.ray[x].cross[y], rey.ray[x].cross[x]);
-	// if (rey.ray[x].dis < rey.ray[y].dis)
-	// {
-
-	// }
+	if (rey.ray[x].dis < rey.ray[y].dis)
+	{
+		//ir a la textura de x, mirar orientación (lo podemos mirar arriba well)
+	}
 }
