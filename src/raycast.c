@@ -57,6 +57,10 @@ void	calculate_ray(t_ray *rey, float *r_pos, t_params *param, int r)
 	rey->ray[r].cross[x] += rey->ray[r].step[x];
 	rey->ray[r].cross[y] += rey->ray[r].step[y];
 	}
+	if (r == x)
+		rey->ray[r].wface = 1 * rey->signx;
+	else
+		rey->ray[r].wface = 2 * rey->signy;
 	rey->ray[r].dis = sqrt(pow(rey->ray[r].cross[x] - rey->pos[x], 2) + pow(rey->ray[r].cross[y] - rey->pos[y], 2));
 	//coll.distance = coll.raylen * cos(ray->deltaang);
 }

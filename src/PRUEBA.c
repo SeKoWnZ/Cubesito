@@ -20,6 +20,21 @@ typedef struct s_data
 	mlx_image_t* img[46];
 }	t_data;
 
+void	rotate(void *param)
+{
+	static int frame_counter = 0;
+	static int i;
+	t_data *game = (t_data *)param;
+
+	if (++frame_counter >= 10) 
+	{
+		frame_counter = 0;
+		game->img[i % 46]->enabled = false;
+		i++;
+		game->img[i % 46]->enabled = true;
+	}
+}
+
 int32_t	main(void)
 {
 	t_data data;
@@ -67,20 +82,6 @@ int32_t	main(void)
 			data.img[i]->enabled = true;
 		else
 			data.img[i]->enabled = false;
-	}
-
-	void	rotate(void *param)
-	{
-		static int frame_counter = 0;
-		static int i;
-		t_data *game = (t_data *)param;
-
-		if (++frame_counter >= 10) {
-			frame_counter = 0;
-			game->img[i % 46]->enabled = false;
-			i++;
-			game->img[i % 46]->enabled = true;
-		}
 	}
 
 	mlx_loop_hook(data.mlx, &rotate, &data);

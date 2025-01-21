@@ -36,6 +36,7 @@ typedef struct s_lil_ray
 	float	cross[2];
 	float	step[2];
 	double	dis;
+	int		wface;
 }	t_lil_ray;
 
 typedef struct s_ray
