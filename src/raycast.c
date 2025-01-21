@@ -101,7 +101,7 @@ void	raycast(t_cub *cub, mlx_image_t *frame, int *i)
 		calculate_ray(&rey, rey.pos, cub->params, y);
 	printf("RAY Y (y=%f, x=%f)\nRAY X (y=%f, x=%f)\n", rey.ray[y].cross[y], rey.ray[y].cross[x], rey.ray[x].cross[y], rey.ray[x].cross[x]);
 	if (rey.ray[x].dis < rey.ray[y].dis)
-	{
-		//ir a la textura de x, mirar orientación (lo podemos mirar arriba well)
-	}
+		draw_ray(cub, &rey.ray[x], frame, y);
+	else
+		draw_ray(cub, &rey.ray[y], frame, x);
 }
