@@ -11,6 +11,7 @@
 #define x 1
 #define W_WIDTH 800
 #define W_HEIGHT 600
+#define FOV 90
 
 typedef struct s_params
 {
@@ -35,7 +36,9 @@ typedef struct s_lil_ray
 {
 	float	cross[2];
 	float	step[2];
+	float	pix;
 	double	dis;
+	int		w_size;
 	int		wface;
 }	t_lil_ray;
 
@@ -52,6 +55,7 @@ typedef struct s_ray
 typedef struct s_cub
 {
 	mlx_t		*mlx;
+	mlx_image_t *frame;
 	char		*map;
 	t_params	*params;
 	t_player	*player;
@@ -86,7 +90,8 @@ void	cube_it(t_cub *cub);
 //RAY THINGS
 
 double	rad_convertor(double deg);
-void	raycast(t_cub *cub, mlx_image_t *frame, int *i);
+void	raycast(t_cub *cub, double ray_ang, int *i);
+void	draw_ray(t_cub *cub, t_lil_ray *ray, int r, int i);
 
 //PARSE
 

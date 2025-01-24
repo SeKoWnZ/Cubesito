@@ -36,27 +36,24 @@ void	first_step(t_ray *rey, float *r_pos, int r)
 
 int	ray_collide(t_ray *rey, t_params *param, int r)
 {
-	printf("RAY (y=%f, x=%f)\n", rey->ray[r].cross[y], rey->ray[r].cross[x]);
-	if (rey->ray[r].cross[x] >= param->max[x] || rey->ray[r].cross[y] >= param->max[y] || rey->ray[r].cross[x] < 0 || rey->ray[r].cross[y] < 0)
+	if ((int)rey->ray[r].cross[x] >= param->max[x] || (int)rey->ray[r].cross[y] >= param->max[y] || (int)rey->ray[r].cross[x] < 0 || (int)rey->ray[r].cross[y] < 0)
 		return (1);
 	if (rey->map[(int)rey->ray[r].cross[y]][(int)rey->ray[r].cross[x]] == '1')
 		return (1);
 	return (0);
-	//CROSS DEL RAYO R ESTA OCUPADO POR UN MURO?? O YA ESTA FUERA DEL MAPA??
 }
 
 void	calculate_ray(t_ray *rey, float *r_pos, t_params *param, int r)
 {
 	first_step(rey, r_pos, r);
-	printf("PLAYER Y :%f | PLAYER X :%f\n", rey->pos[y], rey->pos[x]);
-	printf("CROSS Y :%f | CROSS X :%f\n", rey->ray[r].cross[y], rey->ray[r].cross[x]);
 	while (1)
 	{
 		if (ray_collide(rey, param, r))
 			break ;
-	rey->ray[r].cross[x] += rey->ray[r].step[x];
-	rey->ray[r].cross[y] += rey->ray[r].step[y];
+		rey->ray[r].cross[x] += rey->ray[r].step[x];
+		rey->ray[r].cross[y] += rey->ray[r].step[y];
 	}
+	printf("R = %d CROSSX = %f | CORSY = %f\n",r, rey->ray[r].cross[x], rey->ray[r].cross[y]);
 	if (r == x)
 		rey->ray[r].wface = 1 * rey->signx;
 	else
@@ -64,14 +61,13 @@ void	calculate_ray(t_ray *rey, float *r_pos, t_params *param, int r)
 	rey->ray[r].dis = sqrt(pow(rey->ray[r].cross[x] - rey->pos[x], 2) + pow(rey->ray[r].cross[y] - rey->pos[y], 2));
 	//coll.distance = coll.raylen * cos(ray->deltaang);
 }
-void	raycast(t_cub *cub, mlx_image_t *frame, int *i)
+
+void	raycast(t_cub *cub, double ray_ang, int *i)
 {
 	t_ray	rey;
 
-	(void)frame;
-	(void)i;
 	rey.map = cub->params->map;
-	rey.ang = cub->player->pang;
+	rey.ang = ray_ang;
 	rey.pos[x] = cub->player->pox;
 	rey.pos[y] = cub->player->poy;
 	rey.signx = 1;
@@ -94,14 +90,12 @@ void	raycast(t_cub *cub, mlx_image_t *frame, int *i)
 		rey.ray[y].step[x] = 0;
 		rey.ray[x].dis = __FLT_MAX__;
 	}
-	printf("SING X: %i\nSING Y: %i\n", rey.signx, rey.signy);
 	if (rey.ray[x].dis != __FLT_MAX__)
 		calculate_ray(&rey, rey.pos, cub->params, x);
 	if (rey.ray[y].dis != __FLT_MAX__)
 		calculate_ray(&rey, rey.pos, cub->params, y);
-	printf("RAY Y (y=%f, x=%f)\nRAY X (y=%f, x=%f)\n", rey.ray[y].cross[y], rey.ray[y].cross[x], rey.ray[x].cross[y], rey.ray[x].cross[x]);
 	if (rey.ray[x].dis < rey.ray[y].dis)
-		draw_ray(cub, &rey.ray[x], frame, y);
+		draw_ray(cub, &rey.ray[x], y, *i);
 	else
-		draw_ray(cub, &rey.ray[y], frame, x);
+		draw_ray(cub, &rey.ray[y], x, *i);
 }

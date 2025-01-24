@@ -1,19 +1,19 @@
-SO ./perrete.png
+SO ./textures/SUR.png
 F  42,231,0
 
-EA ./perrete.png
+EA ./textures/ESTE.png
 
 C      0,98,241
-NO ./perrete.png
-WE ./perrete.png
+NO ./textures/NORTE.png
+WE ./textures/OESTE.png
 
 
-
-111111111
-100E0000111
-111111111
- 
-111111
+111111111111
+1100000111111111
+10010E001111
+10000001111111
+11111111111
+1111111
 100011111111
 1111111111111
  

@@ -20,16 +20,26 @@ void	ceilingfloor(t_cub *cub, mlx_image_t *frame, int *i)
 void	cube_it(t_cub *cub)
 {
 	int i;
+	double	ang_step;
+	double	ray_ang;
 
 	i = 0;
-	mlx_image_t *frame;
-	frame = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
+	cub->frame = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
+	ang_step = rad_convertor(FOV) / W_WIDTH;
+	//ray_ang = fmod(cub->player->pang - rad_convertor(FOV / 2) + 2 * M_PI, 2 * M_PI);
+	if (cub->player->pang - rad_convertor(FOV / 2) < 0)
+		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
+	else
+		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
 	while(i < W_WIDTH)
 	{
-		ceilingfloor(cub, frame, &i);
-		if (i == W_WIDTH/2)
-			raycast(cub, frame, &i);
+		ceilingfloor(cub, cub->frame, &i);
+		raycast(cub, ray_ang, &i);
+		if (ray_ang + ang_step >= 2 * M_PI)
+			ray_ang = ray_ang - (2 * M_PI) + ang_step;
+		else
+			ray_ang = ray_ang + ang_step;
 		i++;
 	}
-	mlx_image_to_window(cub->mlx, frame, 0, 0);
+	mlx_image_to_window(cub->mlx, cub->frame, 0, 0);
 }
