@@ -25,7 +25,7 @@ void	cube_it(t_cub *cub)
 
 	i = 0;
 	cub->frame = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
-	ang_step = rad_convertor(FOV) / W_WIDTH;
+	ang_step = rad_convertor((FOV + 0.0) / (W_WIDTH + 0.0));
 	//ray_ang = fmod(cub->player->pang - rad_convertor(FOV / 2) + 2 * M_PI, 2 * M_PI);
 	if (cub->player->pang - rad_convertor(FOV / 2) < 0)
 		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
@@ -33,6 +33,7 @@ void	cube_it(t_cub *cub)
 		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
 	while(i < W_WIDTH)
 	{
+		printf("RAYANG = %f\n", ray_ang / (M_PI / 180));
 		ceilingfloor(cub, cub->frame, &i);
 		raycast(cub, ray_ang, &i);
 		if (ray_ang + ang_step >= 2 * M_PI)

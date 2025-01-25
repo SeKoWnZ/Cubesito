@@ -12,8 +12,11 @@ void	first_step(t_ray *rey, float *r_pos, int r)
 			rey->ray[x].cross[y] = r_pos[y];
 		else
 		{
-			rey->ray[x].cross[y] = rey->ray[x].cross[x] / tan(rey->ang);
-			rey->ray[x].cross[y] = rey->ray[x].cross[y] + r_pos[y];
+			rey->ray[x].cross[y] = fabs(rey->ray[x].cross[x]) / fabs(tan(rey->ang));
+			if (rey->ray[x].cross[y] <= 0 || rey->ray[x].cross[y] > 10)
+				rey->ray[x].cross[y] = r_pos[y];
+			else
+				rey->ray[x].cross[y] = rey->ray[x].cross[y] + r_pos[y];
 		}
 		rey->ray[x].cross[x] = rey->ray[x].cross[x] + r_pos[x];
 	}
@@ -27,11 +30,15 @@ void	first_step(t_ray *rey, float *r_pos, int r)
 			rey->ray[y].cross[x] = r_pos[x];
 		else
 		{
-			rey->ray[y].cross[x] = rey->ray[y].cross[y] * tan(rey->ang);
-			rey->ray[y].cross[x] = rey->ray[y].cross[x] + r_pos[x];
+			rey->ray[y].cross[x] = fabs(rey->ray[y].cross[y]) * fabs(tan(rey->ang));
+			if (rey->ray[y].cross[x] <= 0 || rey->ray[y].cross[x] > 10)
+				rey->ray[y].cross[x] = r_pos[x];
+			else
+				rey->ray[y].cross[x] = rey->ray[y].cross[x] + r_pos[x];
 		}
-			rey->ray[y].cross[y] = rey->ray[y].cross[y] + r_pos[y];
+		//rey->ray[y].cross[y] = rey->ray[y].cross[y] + r_pos[y];
 	}
+	printf("FSTEP X = %f|%f FSTEP Y = %f|%f\n", rey->ray[x].cross[x], rey->ray[x].cross[y], rey->ray[y].cross[x], rey->ray[y].cross[y]);
 }
 
 int	ray_collide(t_ray *rey, t_params *param, int r)
@@ -77,23 +84,27 @@ void	raycast(t_cub *cub, double ray_ang, int *i)
 	if (rey.ang > rad_convertor(180) && rey.ang < rad_convertor(360))
 		rey.signy = -1;
 	rey.ray[x].step[x] = rey.signx;
+	rey.ray[x].step[y] = fabs(rey.signy * tan(rey.ang));
+	rey.ray[x].step[y] *= rey.signy;
+	rey.ray[y].step[x] = fabs(rey.signx / tan(rey.ang));
+	rey.ray[y].step[x] *= rey.signx;
 	rey.ray[y].step[y] = rey.signy;
-	rey.ray[x].step[y] = rey.signy * tan(rey.ang);
-	rey.ray[y].step[x] = rey.signx / tan(rey.ang);
-	if (rey.ang == rad_convertor(0) || rey.ang == rad_convertor(180))
-	{
-		rey.ray[x].step[y] = 0;
-		rey.ray[y].dis = __FLT_MAX__;
-	}
-	if (rey.ang == rad_convertor(90) || rey.ang == rad_convertor(270))
-	{
-		rey.ray[y].step[x] = 0;
-		rey.ray[x].dis = __FLT_MAX__;
-	}
-	if (rey.ray[x].dis != __FLT_MAX__)
-		calculate_ray(&rey, rey.pos, cub->params, x);
-	if (rey.ray[y].dis != __FLT_MAX__)
-		calculate_ray(&rey, rey.pos, cub->params, y);
+	printf("XSTEP - X = %f Y = %f\nYSTEP - X = %f Y = %f\n", rey.ray[x].step[x], rey.ray[x].step[y], rey.ray[y].step[x], rey.ray[y].step[y]);
+	// if (rey.ang == rad_convertor(0) || rey.ang == rad_convertor(180))
+	// {
+	// 	rey.ray[x].step[y] = 0;
+	// 	rey.ray[y].dis = __FLT_MAX__;
+	// }
+	// if (rey.ang == rad_convertor(90) || rey.ang == rad_convertor(270))
+	// {
+	// 	rey.ray[y].step[x] = 0;
+	// 	rey.ray[x].dis = __FLT_MAX__;
+	// }
+	//if (rey.ray[x].dis != __FLT_MAX__)
+	calculate_ray(&rey, rey.pos, cub->params, x);
+	//if (rey.ray[y].dis != __FLT_MAX__)
+	calculate_ray(&rey, rey.pos, cub->params, y);
+	printf("X DIS = %f Y DIS = %f\n", rey.ray[x].dis, rey.ray[y].dis);
 	if (rey.ray[x].dis < rey.ray[y].dis)
 		draw_ray(cub, &rey.ray[x], y, *i);
 	else
