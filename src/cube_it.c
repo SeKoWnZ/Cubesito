@@ -24,18 +24,19 @@ void	cube_it(t_cub *cub)
 	double	ray_ang;
 
 	i = 0;
-	cub->frame = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
 	ang_step = rad_convertor((FOV + 0.0) / (W_WIDTH + 0.0));
 	//ray_ang = fmod(cub->player->pang - rad_convertor(FOV / 2) + 2 * M_PI, 2 * M_PI);
 	if (cub->player->pang - rad_convertor(FOV / 2) < 0)
 		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
 	else
 		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
-	printf("-----------------------------\nPLAYER ANG = %f\n", cub->player->pang / (M_PI / 180));
+	//printf("-----------------------------\nPLAYER ANG = %f\n", cub->player->pang / (M_PI / 180));
 	while(i < W_WIDTH)
 	{
 		ceilingfloor(cub, cub->frame, &i);
-		printf("RAYANG = %f\n", ray_ang / (M_PI / 180));
+		//if (i < 500 && i > 300)
+		//printf("MAX Y = %d MAX X = %d\n", cub->params->max[y], cub->params->max[x]);
+		//printf("RAYANG = %f\n", ray_ang / (M_PI / 180));
 		raycast(cub, ray_ang, &i);
 		if (ray_ang + ang_step >= 2 * M_PI)
 			ray_ang = ray_ang - (2 * M_PI) + ang_step;
@@ -43,5 +44,4 @@ void	cube_it(t_cub *cub)
 			ray_ang = ray_ang + ang_step;
 		i++;
 	}
-	mlx_image_to_window(cub->mlx, cub->frame, 0, 0);
 }

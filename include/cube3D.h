@@ -47,7 +47,6 @@ typedef struct s_ray
 	char **		map;
 	float		pos[2];
 	double		ang;
-	double		t_ang;
 	int			signx;
 	int			signy;
 	t_lil_ray	ray[2];

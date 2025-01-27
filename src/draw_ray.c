@@ -34,7 +34,7 @@ void	wall_to_screen(mlx_texture_t *wall,t_lil_ray *ray, mlx_image_t *frame, int 
 void	draw_ray(t_cub *cub, t_lil_ray *ray, int r, int i)
 {
 	ray->pix = ray->cross[r] - (int)ray->cross[r];
-	printf("RAY PIX %d = %f\nRAY WFACE = %d\n", r, ray->pix, ray->wface);
+	//printf("RAY PIX %d = %f\nRAY WFACE = %d\n", r, ray->pix, ray->wface);
 	if (ray->wface == -2)
 		wall_to_screen(cub->params->so, ray, cub->frame, i);
 	else if (ray->wface == 2)

@@ -5,6 +5,8 @@ int	mlx_initialize(t_cub *cube)
 	cube->mlx = mlx_init(W_WIDTH, W_HEIGHT, "Lil_cube", false);
 	if (!cube->mlx)
 		error_exit(E_MLX, cube);
+	cube->frame = mlx_new_image(cube->mlx, W_WIDTH, W_HEIGHT);
+	mlx_image_to_window(cube->mlx, cube->frame, 0, 0);
 	return (0);
 }
 
