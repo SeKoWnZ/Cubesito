@@ -19,7 +19,7 @@ void	ceilingfloor(t_cub *cub, mlx_image_t *frame, int *i)
 
 void	cube_it(t_cub *cub)
 {
-	int i;
+	int		i;
 	double	ang_step;
 	double	ray_ang;
 
@@ -31,10 +31,11 @@ void	cube_it(t_cub *cub)
 		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
 	else
 		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
+	printf("-----------------------------\nPLAYER ANG = %f\n", cub->player->pang / (M_PI / 180));
 	while(i < W_WIDTH)
 	{
-		printf("RAYANG = %f\n", ray_ang / (M_PI / 180));
 		ceilingfloor(cub, cub->frame, &i);
+		printf("RAYANG = %f\n", ray_ang / (M_PI / 180));
 		raycast(cub, ray_ang, &i);
 		if (ray_ang + ang_step >= 2 * M_PI)
 			ray_ang = ray_ang - (2 * M_PI) + ang_step;

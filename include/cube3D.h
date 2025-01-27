@@ -11,7 +11,7 @@
 #define x 1
 #define W_WIDTH 800
 #define W_HEIGHT 600
-#define FOV 90
+#define FOV 60
 
 typedef struct s_params
 {
@@ -47,6 +47,7 @@ typedef struct s_ray
 	char **		map;
 	float		pos[2];
 	double		ang;
+	double		t_ang;
 	int			signx;
 	int			signy;
 	t_lil_ray	ray[2];
