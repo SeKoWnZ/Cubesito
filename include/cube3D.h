@@ -27,15 +27,15 @@ typedef struct s_params
 
 typedef struct s_player
 {
-	float		pox;
-	float		poy;
+	double		pox;
+	double		poy;
 	double		pang;
 }	t_player;
 
 typedef struct s_lil_ray
 {
-	float	cross[2];
-	float	step[2];
+	double	cross[2];
+	double	step[2];
 	float	pix;
 	double	dis;
 	int		w_size;
@@ -45,8 +45,9 @@ typedef struct s_lil_ray
 typedef struct s_ray
 {
 	char **		map;
-	float		pos[2];
+	double		pos[2];
 	double		ang;
+	double		ang_b;
 	int			signx;
 	int			signy;
 	t_lil_ray	ray[2];
@@ -91,6 +92,8 @@ void	cube_it(t_cub *cub);
 
 double	rad_convertor(double deg);
 void	raycast(t_cub *cub, double ray_ang, int *i);
+void	calculate_ray_x(t_ray *rey, t_params *param);
+void	calculate_ray_y(t_ray *rey, t_params *param);
 void	draw_ray(t_cub *cub, t_lil_ray *ray, int r, int i);
 
 //PARSE

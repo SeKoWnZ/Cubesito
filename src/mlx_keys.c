@@ -18,13 +18,13 @@ void	key_controls(void *param)
 		mlx_close_window((mlx_t *)cub->mlx);
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_A))
 	{
-		cub->player->pang -= rad_convertor(5);
+		cub->player->pang -= rad_convertor(1);
 		if (cub->player->pang < 0)
 			cub->player->pang += rad_convertor(360);
 	}
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_D))
 	{
-		cub->player->pang += rad_convertor(5);
+		cub->player->pang += rad_convertor(1);
 		if (cub->player->pang > rad_convertor(360))
 			cub->player->pang -= rad_convertor(360);
 	}

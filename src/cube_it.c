@@ -30,13 +30,9 @@ void	cube_it(t_cub *cub)
 		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
 	else
 		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
-	//printf("-----------------------------\nPLAYER ANG = %f\n", cub->player->pang / (M_PI / 180));
 	while(i < W_WIDTH)
 	{
 		ceilingfloor(cub, cub->frame, &i);
-		//if (i < 500 && i > 300)
-		//printf("MAX Y = %d MAX X = %d\n", cub->params->max[y], cub->params->max[x]);
-		//printf("RAYANG = %f\n", ray_ang / (M_PI / 180));
 		raycast(cub, ray_ang, &i);
 		if (ray_ang + ang_step >= 2 * M_PI)
 			ray_ang = ray_ang - (2 * M_PI) + ang_step;
