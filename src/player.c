@@ -22,9 +22,9 @@ void	init_player(t_cub *lil_cub)
 				lil_cub->player->poy = j + 0.5;
 			}
 			if (lil_cub->params->map[j][i] == 'S')
-				lil_cub->player->pang = rad_convertor(270);
-			if (lil_cub->params->map[j][i] == 'N')
 				lil_cub->player->pang = rad_convertor(90);
+			if (lil_cub->params->map[j][i] == 'N')
+				lil_cub->player->pang = rad_convertor(270);
 			if (lil_cub->params->map[j][i] == 'E')
 				lil_cub->player->pang = rad_convertor(0);
 			if (lil_cub->params->map[j][i] == 'W')

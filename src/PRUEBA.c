@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../include/MLX42.h"
-#include "../include/libft.h"
-#define WIDTH 512
-#define HEIGHT 512
+#include <cube3D.h>
 
 static void error(void)
 {
@@ -13,34 +6,24 @@ static void error(void)
 	exit(EXIT_FAILURE);
 }
 
-typedef struct s_data
-{
-	mlx_t *mlx;
-	mlx_texture_t *texture[46];
-	mlx_image_t* img[46];
-}	t_data;
-
-void	rotate(void *param)
+void	rotate(t_cub *cub)
 {
 	static int frame_counter = 0;
 	static int i;
-	t_data *game = (t_data *)param;
 
 	if (++frame_counter >= 10) 
 	{
 		frame_counter = 0;
-		game->img[i % 46]->enabled = false;
+		cub->params->img[i % 46]->enabled = false;
 		i++;
-		game->img[i % 46]->enabled = true;
+		cub->params->img[i % 46]->enabled = true;
 	}
 }
 
-int32_t	main(void)
+void	animation_init(t_cub *cub)
 {
-	t_data data;
-		// Try to load the fill
-	char	*s1 = ft_strdup("../textures/PNGS/0");
-	char	*s11 = ft_strdup("../textures/PNGS/");
+	char	*s1 = ft_strdup("./textures/PNGS/0");
+	char	*s11 = ft_strdup("./textures/PNGS/");
 	char	*s3 = ft_strdup(".png");
 	char	*s2;
 	char	*s4;
@@ -54,8 +37,8 @@ int32_t	main(void)
 		else
 			s4 = ft_strjoin(s11, s2);
 		s5 = ft_strjoin(s4, s3);
-		data.texture[i] = mlx_load_png(s5);
-		if (!data.texture[i])
+		cub->params->texture[i] = mlx_load_png(s5);
+		if (!cub->params->texture[i])
 			error();
 		free(s2);
 		free(s4);
@@ -65,35 +48,18 @@ int32_t	main(void)
 	free(s11);
 	free(s3);
 
-	// Start mlx
-	data.mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
-	if (!data.mlx)
-        error();
-
 	// Convert texture to a displayable image
 	for (int i = 0; i < 46; i++)
 	{
-		data.img[i] = mlx_texture_to_image(data.mlx, data.texture[i]);
-		if (!data.img[i])
+		cub->params->img[i] = mlx_texture_to_image(cub->mlx, cub->params->texture[i]);
+		mlx_resize_image(cub->params->img[i], 87, 100);
+		if (!cub->params->img[i])
 			error();
-		if (mlx_image_to_window(data.mlx, data.img[i], 0, 0) < 0)
+		if (mlx_image_to_window(cub->mlx, cub->params->img[i], W_WIDTH / 2 - 43, W_HEIGHT - 100) < 0)
 			error();
 		if (i == 0)
-			data.img[i]->enabled = true;
+			cub->params->img[i]->enabled = true;
 		else
-			data.img[i]->enabled = false;
+			cub->params->img[i]->enabled = false;
 	}
-
-	mlx_loop_hook(data.mlx, &rotate, &data);
-
-	mlx_loop(data.mlx);
-
-	for (int i = 0; i < 46; i ++){
-		mlx_delete_image(data.mlx, data.img[i]);
-	}
-	for (int i = 0; i < 46; i ++){
-		mlx_delete_texture(data.texture[i]);
-	}
-	mlx_terminate(data.mlx);
-	return (EXIT_SUCCESS);
 }

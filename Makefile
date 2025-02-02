@@ -8,7 +8,7 @@ LFLAGS = -L$(LIBFT) -lft -L$(MLX)/build -lmlx42 -Iinclude -lglfw -ldl -pthread -
 
 FILES = cube3D.c init_cub.c parse_map.c valid_map.c parse_color.c parse_check.c error.c \
 square_map.c mlx_run.c mlx_keys.c cube_it.c raycast.c ray_cal_x.c ray_cal_y.c \
-draw_ray.c player.c
+draw_ray.c player.c PRUEBA.c
 
 #B_FILES =
 

@@ -19,6 +19,8 @@ typedef struct s_params
 	mlx_texture_t	*so;
 	mlx_texture_t	*ea;
 	mlx_texture_t	*we;
+	mlx_texture_t	*texture[46];
+	mlx_image_t		*img[46];
 	int				c;
 	int				f;
 	int				max[2];
@@ -86,7 +88,10 @@ void	parse_map(t_cub *lil_cub, char *arg);
 
 int		mlx_initialize(t_cub *cube);
 void	mlx_run(t_cub *lil_cub);
+void	gameloop(void *param);
 void	cube_it(t_cub *cub);
+void	animation_init(t_cub *cube);
+void	rotate(t_cub *cube);
 
 //RAY THINGS
 
@@ -106,7 +111,7 @@ int		square_map(t_params *params, char **map);
 
 //KEYS
 
-void	key_controls(void *param);
+void	key_controls(t_cub *cub);
 
 //ERROR
 

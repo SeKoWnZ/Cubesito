@@ -25,7 +25,7 @@ void	wall_to_screen(mlx_texture_t *wall,t_lil_ray *ray, mlx_image_t *frame, int 
 	y_max = (W_HEIGHT + ray->w_size) / 2;
 	while (y_pos < y_max)
 	{
-		if (y_pos > 0 && y_pos < W_HEIGHT)
+		if (y_pos >= 0 && y_pos < W_HEIGHT)
 			mlx_put_pixel(frame, i, y_pos, get_pix(wall, ray, (y_pos - (W_HEIGHT - ray->w_size) / 2)));
 		y_pos++;
 	}
