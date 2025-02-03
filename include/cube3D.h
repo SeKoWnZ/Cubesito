@@ -78,6 +78,9 @@ typedef struct s_cub
 #define E_NLINE "Error: Empty line on map or space on param\n"
 #define E_MLX "Error"
 
+#define SOURCE "./textures/PNGS/"
+#define SOURCE2 ".png"
+
 //INIT FUNCT
 
 void	init_cube(t_cub *lil_cub);
