@@ -5,6 +5,8 @@ int	mlx_initialize(t_cub *cube)
 	cube->mlx = mlx_init(W_WIDTH, W_HEIGHT, "Lil_cube", false);
 	if (!cube->mlx)
 		error_exit(E_MLX, cube);
+	mlx_set_cursor_mode(cube->mlx, MLX_MOUSE_HIDDEN);
+	mlx_set_mouse_pos(cube->mlx, W_WIDTH / 2, W_HEIGHT / 2);
 	cube->frame = mlx_new_image(cube->mlx, W_WIDTH, W_HEIGHT);
 	mlx_image_to_window(cube->mlx, cube->frame, 0, 0);
 	animation_init(cube);

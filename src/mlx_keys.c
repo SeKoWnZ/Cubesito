@@ -2,9 +2,24 @@
 
 void move_player(t_cub *cub, double mov_x, double mov_y)
 {
-	printf("ANG = %f\nMOVX = %f\nMOVY = %f\n", cub->player->pang, mov_x, mov_y);
 	cub->player->pox += mov_x / 50.0;
+	if (cub->params->map[(int)cub->player->poy][(int)(cub->player->pox - 0.2)] == '1'
+		|| cub->params->map[(int)cub->player->poy][(int)(cub->player->pox + 0.2)] == '1')
+		cub->player->pox -= mov_x / 50.0;	
 	cub->player->poy += mov_y / 50.0;
+	if (cub->params->map[(int)(cub->player->poy - 0.2)][(int)cub->player->pox] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.2)][(int)cub->player->pox] == '1')
+		cub->player->poy -= mov_y / 50.0;
+}
+
+void	mouse_controls(t_cub *cub)
+{
+	static int	equis;
+	static int	ye;
+
+	mlx_get_mouse_pos(cub->mlx, &equis, &ye);
+	cub->player->pang += rad_convertor((equis - W_WIDTH / 2) / 50.0);
+	mlx_set_mouse_pos(cub->mlx, W_WIDTH / 2, W_HEIGHT / 2);
 }
 
 void	key_controls(t_cub *cub)
@@ -27,6 +42,7 @@ void	key_controls(t_cub *cub)
 		cub->player->pang += rad_convertor(360);
 	if (cub->player->pang > rad_convertor(360))
 		cub->player->pang -= rad_convertor(360);
+	mouse_controls(cub);
 }
 
 void	gameloop(void *param)
