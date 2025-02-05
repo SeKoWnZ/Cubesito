@@ -21,6 +21,8 @@ typedef struct s_params
 	mlx_texture_t	*we;
 	mlx_texture_t	*texture[46];
 	mlx_image_t		*img[46];
+	mlx_texture_t	*t_hud;
+	mlx_image_t		*i_hud;
 	int				c;
 	int				f;
 	int				max[2];
@@ -38,7 +40,7 @@ typedef struct s_lil_ray
 {
 	double	cross[2];
 	double	step[2];
-	float	pix;
+	double	pix;
 	double	dis;
 	int		w_size;
 	int		wface;

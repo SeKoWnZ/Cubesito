@@ -1,11 +1,11 @@
-SO ./textures/PNGS/1.png
+SO ./textures/0001.png
 F  42,231,0
 
-EA ./textures/PNGS/10.png
+EA ./textures/0002.png
 
 C      0,98,241
-NO ./textures/PNGS/30.png
-WE ./textures/PNGS/46.png
+NO ./textures/0003.png
+WE ./textures/0004.png
 
 11111111111
 10000000001

@@ -18,7 +18,7 @@ void	rotate(t_cub *cub)
 	static int frame_counter = 0;
 	static int i;
 
-	if (++frame_counter >= 10) 
+	if (++frame_counter >= 20) 
 	{
 		frame_counter = 0;
 		cub->params->img[i % 46]->enabled = false;
@@ -31,14 +31,19 @@ void	init_animation(t_cub *cub)
 {
 	int		i;
 
+	cub->params->i_hud = mlx_texture_to_image(cub->mlx, cub->params->t_hud);
+	if (!cub->params->i_hud)
+		animation_error(cub);
+	if (mlx_image_to_window(cub->mlx, cub->params->i_hud, -(cub->params->i_hud->width / 2) + (W_WIDTH / 5), -(cub->params->i_hud->height / 2) + (W_HEIGHT - W_HEIGHT / 5)) < 0)
+	animation_error(cub);
 	i = -1;
 	while (++i < 46)
 	{
 		cub->params->img[i] = mlx_texture_to_image(cub->mlx, cub->params->texture[i]);
-		mlx_resize_image(cub->params->img[i], 87, 100);
+		mlx_resize_image(cub->params->img[i], 350 / 4.3, 400 / 4.3);
 		if (!cub->params->img[i])
 			animation_error(cub);
-		if (mlx_image_to_window(cub->mlx, cub->params->img[i], W_WIDTH / 2 - 43, W_HEIGHT - 100) < 0)
+		if (mlx_image_to_window(cub->mlx, cub->params->img[i], -((350 / 4.3) / 2) + (W_WIDTH / 5), -((400 / 4.3) / 2) + (W_HEIGHT - W_HEIGHT / 5)) < 0)
 			animation_error(cub);
 		if (i == 0)
 			cub->params->img[i]->enabled = true;
@@ -53,6 +58,9 @@ void	animation_init(t_cub *cub)
 	char 	*tmp;
 	int		i;
 
+	cub->params->t_hud = mlx_load_png("./textures/PNGS/HUD.png");
+	if (!cub->params->t_hud)
+		animation_error(cub);
 	i = -1;
 	while (++i < 46)
 	{
