@@ -18,7 +18,7 @@ void	rotate(t_cub *cub)
 	static int frame_counter = 0;
 	static int i;
 
-	if (++frame_counter >= 20) 
+	if (++frame_counter >= 10) 
 	{
 		frame_counter = 0;
 		cub->params->img[i % 46]->enabled = false;

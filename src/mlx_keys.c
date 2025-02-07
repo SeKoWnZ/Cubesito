@@ -3,12 +3,16 @@
 void move_player(t_cub *cub, double mov_x, double mov_y)
 {
 	cub->player->pox += mov_x / 50.0;
-	if (cub->params->map[(int)cub->player->poy][(int)(cub->player->pox - 0.2)] == '1'
-		|| cub->params->map[(int)cub->player->poy][(int)(cub->player->pox + 0.2)] == '1')
-		cub->player->pox -= mov_x / 50.0;	
+	if (cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox + 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox + 0.1)] == '1')
+		cub->player->pox -= mov_x / 50.0;
 	cub->player->poy += mov_y / 50.0;
-	if (cub->params->map[(int)(cub->player->poy - 0.2)][(int)cub->player->pox] == '1'
-		|| cub->params->map[(int)(cub->player->poy + 0.2)][(int)cub->player->pox] == '1')
+	if (cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox + 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox + 0.1)] == '1')
 		cub->player->poy -= mov_y / 50.0;
 }
 
