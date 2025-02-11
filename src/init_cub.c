@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_cub.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/11 20:02:26 by sarajime          #+#    #+#             */
+/*   Updated: 2025/02/11 20:02:29 by sarajime         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube3D.h"
 
 void	init_cube(t_cub *lil_cub)
 {
 	lil_cub->map = NULL;
+	lil_cub->mlx = NULL;
 	lil_cub->params = ft_calloc(1, sizeof(t_params));
 		if (!lil_cub->params)
 			error_exit(E_MALLOC, lil_cub);

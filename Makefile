@@ -2,8 +2,8 @@ NAME = cub3D
 MLX = ./lib/MLX42
 LIBFT = ./lib/Libft
 #NAME_BONUS =
-FLAGS = -g -Wall -Wextra -Werror -I./include/
-LFLAGS = -L$(LIBFT) -lft -L$(MLX)/build -lmlx42 -Iinclude -lglfw -ldl -pthread -lm -no-pie
+FLAGS = -g -Wall -Wextra -Werror -I./include/ #-fsanitize=address
+LFLAGS = -L$(LIBFT) -lft -L$(MLX)/build -lmlx42 -Iinclude -lglfw -ldl -lm -no-pie
 #LFLAGS = -L$(LIBFT) -lft -L$(MLX) -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
 
 FILES = cube3D.c init_cub.c parse_map.c valid_map.c parse_color.c parse_check.c error.c \

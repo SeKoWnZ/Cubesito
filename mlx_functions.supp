@@ -1,0 +1,145 @@
+{
+    leak mlx_image_to_window
+    Memcheck:Leak
+    ...
+    fun:mlx_image_to_window
+}
+
+{
+    leak mlx_load_png
+    Memcheck:Leak
+    ...
+    fun:mlx_load_png
+}
+
+{
+    leak mlx_delete_image
+    Memcheck:Leak
+    ...
+    fun:mlx_delete_image
+}
+
+{
+    leak mlx_delete_texture
+    Memcheck:Leak
+    ...
+    fun:mlx_delete_texture
+}
+
+{
+    leak mlx_key_hook
+    Memcheck:Leak
+    ...
+    fun:mlx_key_hook
+}
+
+{
+    leak mlx_loop
+    Memcheck:Leak
+    ...
+    fun:mlx_loop
+}
+
+{
+    leak mlx_get_pixel
+    Memcheck:Leak
+    ...
+    fun:mlx_get_pixel
+}
+
+{
+    leak mlx_new_image
+    Memcheck:Leak
+    ...
+    fun:mlx_new_image
+}
+
+{
+    leak mlx_image_to_window
+    Memcheck:Leak
+    ...
+    fun:mlx_image_to_window
+}
+
+{
+    leak mlx_loop
+    Memcheck:Leak
+    ...
+    fun:mlx_loop
+}
+
+{
+    leak mlx_loop_hook
+    Memcheck:Leak
+    ...
+    fun:mlx_loop_hook
+}
+
+{
+    leak mlx_key_hook
+    Memcheck:Leak
+    ...
+    fun:mlx_key_hook
+}
+
+{
+    leak mlx_mouse_hook
+    Memcheck:Leak
+    ...
+    fun:mlx_mouse_hook
+}
+
+{
+    leak mlx_new_image
+    Memcheck:Leak
+    ...
+    fun:mlx_new_image
+}
+
+{
+    leak mlx_put_pixel
+    Memcheck:Leak
+    ...
+    fun:mlx_put_pixel
+}
+
+{
+    leak mlx_texture_to_image
+    Memcheck:Leak
+    ...
+    fun:mlx_texture_to_image
+}
+
+{
+    leak mlx_terminate
+    Memcheck:Leak
+    ...
+    fun:mlx_terminate
+}
+
+{
+    leak mlx_resize_image
+    Memcheck:Leak
+    ...
+    fun:mlx_resize_image
+}
+
+{
+   ignore_gl
+   Memcheck:Leak
+   fun:XCreatePixmap
+   fun:XCreateImage
+   fun:XShmCreateImage
+   fun:glXCreateContext
+   fun:glXDestroyContext
+   fun:glXMakeCurrent
+   fun:glXSwapBuffers
+   fun:glGenTextures
+   fun:glDeleteTextures
+   fun:glGenBuffers
+   fun:glDeleteBuffers
+   fun:glGenVertexArrays
+   fun:glDeleteVertexArrays
+   fun:glfwInit
+   fun:glfwTerminate
+}

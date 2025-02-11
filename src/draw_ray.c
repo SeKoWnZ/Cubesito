@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_ray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/11 20:01:51 by sarajime          #+#    #+#             */
+/*   Updated: 2025/02/11 20:01:54 by sarajime         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cube3D.h>
 
 int	get_pix(mlx_texture_t *wall, t_lil_ray *ray, int y_pos)
@@ -27,7 +39,7 @@ void	wall_to_screen(mlx_texture_t *wall, t_lil_ray *ray, mlx_image_t *frame, int
 
 	if (ray->dis < 0.01)
 		ray->dis = 0.01;
-	ray->w_size = 1000 / ray->dis;
+	ray->w_size = 800 / ray->dis;
 	y_min = (W_HEIGHT - ray->w_size) / 2;
 	y_max = (W_HEIGHT + ray->w_size) / 2;
 	y_pos = y_min;

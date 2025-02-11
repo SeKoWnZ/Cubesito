@@ -9,8 +9,8 @@
 
 #define y 0
 #define x 1
-#define W_WIDTH  1280
-#define W_HEIGHT 1024
+#define W_WIDTH  800
+#define W_HEIGHT 600
 #define FOV 60
 
 typedef struct s_params
@@ -126,5 +126,6 @@ int		error_free(char *error, t_cub *lil_cub, char **free_p);
 //FREE
 
 void	free_double_p(char **p);
+void	free_nano(char *error, t_cub *cub);
 
 #endif
