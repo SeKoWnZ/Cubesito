@@ -1,24 +1,18 @@
 NAME = cub3D
 MLX = ./lib/MLX42
 LIBFT = ./lib/Libft
-#NAME_BONUS =
+
 FLAGS = -g -Wall -Wextra -Werror -I./include/ #-fsanitize=address
 LFLAGS = -L$(LIBFT) -lft -L$(MLX)/build -lmlx42 -Iinclude -lglfw -ldl -lm -no-pie
-#LFLAGS = -L$(LIBFT) -lft -L$(MLX) -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
 
 FILES = cube3D.c init_cub.c parse_map.c valid_map.c parse_color.c parse_check.c error.c \
 square_map.c mlx_run.c mlx_keys.c cube_it.c raycast.c ray_cal_x.c ray_cal_y.c \
 draw_ray.c player.c animation.c
 
-#B_FILES =
-
 SRC_DIR = src
-#SRC_B = src_bonus
 OBJ_DIR = obj
 SOURCES = $(FILES:%=$(SRC_DIR)/%)
 OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SOURCES))
-#B_SOURCES = $(B_FILES:%=$(SRC_B)/%)
-#B_OBJECTS = $(patsubst $(SRC_B)/%.c, $(OBJ_DIR)/%.o, $(B_SOURCES))
 
 all: libft mlx42 $(NAME)
 
@@ -27,7 +21,6 @@ libft:
 
 mlx42:
 	@cmake $(MLX) -B $(MLX)/build && make -C $(MLX)/build -j4
-#	@$(MAKE) -C ./include/
 
 $(NAME): $(OBJECTS)
 	gcc $(FLAGS) -o $@ $^ $(LFLAGS)
@@ -35,8 +28,6 @@ $(NAME): $(OBJECTS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	gcc $(FLAGS) -c -o $@ $<
-
-# bonus: libft $(NAME_BONUS)
 
 $(NAME_BONUS): $(B_OBJECTS)
 	gcc $(FLAGS) -o $@ $^ $(LFLAGS)
@@ -54,8 +45,7 @@ fclean: clean
 	@$(MAKE) -C $(LIBFT) fclean
 	rm -rf $(MLX)/build
 	rm -rf $(NAME)
-	rm -rf $(NAME_BONUS)
 
 re: fclean all
 
-.PHONY: bonus all clean fclean re libft
+.PHONY: all clean fclean re libft

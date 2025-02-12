@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:02:10 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/12 16:15:36 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:02:25 by sarajime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	free_nano(char *error, t_cub *cub)
 	if (cub->params->t_hud)
 		mlx_delete_texture(cub->params->t_hud);
 	i = -1;
-	while (++i < 46)
+	while (++i < 46 && cub->params->texture[i])
 		mlx_delete_texture(cub->params->texture[i]);
 	error_exit(error, cub);
 }

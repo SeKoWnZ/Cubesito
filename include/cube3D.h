@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube3D.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/12 17:20:03 by jose-gon          #+#    #+#             */
+/*   Updated: 2025/02/12 18:03:04 by sarajime         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-#include <libft.h>
-#include <MLX42.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <math.h>
+# include <libft.h>
+# include <MLX42.h>
+# include <errno.h>
+# include <fcntl.h>
+# include <math.h>
 
-#define y 0
-#define x 1
-#define W_WIDTH  1024
-#define W_HEIGHT 768
-#define FOV 60
+# define Y 0
+# define X 1
+# define W_WIDTH  1024
+# define W_HEIGHT 768
+# define FOV 60
 
 typedef struct s_params
 {
@@ -48,7 +60,7 @@ typedef struct s_lil_ray
 
 typedef struct s_ray
 {
-	char **		map;
+	char		**map;
 	double		pos[2];
 	double		ang;
 	double		ang_b;
@@ -60,7 +72,7 @@ typedef struct s_ray
 typedef struct s_cub
 {
 	mlx_t		*mlx;
-	mlx_image_t *frame;
+	mlx_image_t	*frame;
 	char		*map;
 	t_params	*params;
 	t_player	*player;
@@ -68,20 +80,20 @@ typedef struct s_cub
 
 //ERROR MSGS
 
-#define E_ARGS "Error: Invalid number of args\n"
-#define E_PARAM "Error: Invalid parameters\n"
-#define E_MISS "Error: Missing parameters\n"
-#define E_MAP "Error: The map parameters are incorrect\n"
-#define E_FORMAT "Error: Invalid map format\n"
-#define E_MALLOC "Error"
-#define E_OPEN "Error"
-#define E_EMPTY "Error: Map is empty\n"
-#define E_REP "Error: Repeated parameters\n"
-#define E_NLINE "Error: Empty line on map or space on param\n"
-#define E_MLX "Error"
+# define E_ARGS "Error: Invalid number of args\n"
+# define E_PARAM "Error: Invalid parameters\n"
+# define E_MISS "Error: Missing parameters\n"
+# define E_MAP "Error: The map parameters are incorrect\n"
+# define E_FORMAT "Error: Invalid map format\n"
+# define E_MALLOC "Error"
+# define E_OPEN "Error"
+# define E_EMPTY "Error: Map is empty\n"
+# define E_REP "Error: Repeated parameters\n"
+# define E_NLINE "Error: Empty line on map or space on param\n"
+# define E_MLX "Error"
 
-#define SOURCE "./textures/PNGS/"
-#define SOURCE2 ".png"
+# define SOURCE "./textures/PNGS/"
+# define SOURCE2 ".png"
 
 //INIT FUNCT
 

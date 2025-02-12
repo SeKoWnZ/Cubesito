@@ -6,7 +6,7 @@
 /*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:05:34 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/12 16:56:42 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:38:54 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	size_n_char(t_params *params, char **map)
 		if (ok_char(*map, &lil_player, &max_x))
 			return (1);
 		map++;
-		params->max[y]++;
-		if (max_x > params->max[x])
-			params->max[x] = max_x;
+		params->max[Y]++;
+		if (max_x > params->max[X])
+			params->max[X] = max_x;
 	}
 	if (lil_player != 1)
 		return (1);
