@@ -6,7 +6,7 @@
 /*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:05:26 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/11 20:05:27 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:50:41 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	init_rey(t_cub *cub, t_ray *rey, double ray_ang)
 	if (rey->ang > (M_PI / 2) && rey->ang < (3 * M_PI / 2))
 		rey->signx = -1;
 	if (rey->ang < M_PI && rey->ang > 0)
-	//if (rey->ang > rad_convertor(180) && rey->ang < rad_convertor(360))
 		rey->signy = -1;
 	rey->ray[x].step[x] = rey->signx;
 	rey->ray[x].step[y] = rey->signy * fabs(tan(rey->ang));

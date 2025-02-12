@@ -6,7 +6,7 @@
 /*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:05:21 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/11 20:05:22 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:50:23 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 int	ray_collide_y(t_ray *rey, t_params *param)
 {
-	if ((int)rey->ray[y].cross[x] >= param->max[x] || (int)rey->ray[y].cross[y] >= param->max[y] || (int)rey->ray[y].cross[x] <= 0 || (int)rey->ray[y].cross[y] <= 0)
+	if ((int)rey->ray[y].cross[x] >= param->max[x] || (int)rey->ray[y].cross[y]
+		>= param->max[y] || (int)rey->ray[y].cross[x] <= 0
+		|| (int)rey->ray[y].cross[y] <= 0)
 		return (1);
-	if (rey->signy == -1 && rey->map[(int)rey->ray[y].cross[y] - 1][(int)rey->ray[y].cross[x]] == '1')
+	if (rey->signy == -1 && rey->map[(int)rey->ray[y].cross[y] - 1]
+		[(int)rey->ray[y].cross[x]] == '1')
 		return (1);
-	else if (rey->map[(int)rey->ray[y].cross[y]][(int)rey->ray[y].cross[x]] == '1')
+	else if (rey->map[(int)rey->ray[y].cross[y]]
+		[(int)rey->ray[y].cross[x]] == '1')
 		return (1);
 	return (0);
 }
@@ -34,7 +38,8 @@ void	first_step_y(t_ray *rey, int max)
 		rey->ray[y].cross[x] = rey->pos[x];
 	else
 	{
-		rey->ray[y].cross[x] = rey->signx * (fabs(rey->ray[y].cross[y]) / fabs(tan(rey->ang)));
+		rey->ray[y].cross[x] = rey->signx
+			* (fabs(rey->ray[y].cross[y]) / fabs(tan(rey->ang)));
 		rey->ray[y].cross[x] = rey->ray[y].cross[x] + rey->pos[x];
 	}
 	rey->ray[y].cross[y] = rey->ray[y].cross[y] + rey->pos[y];
@@ -51,5 +56,6 @@ void	calculate_ray_y(t_ray *rey, t_params *param)
 		rey->ray[y].cross[y] += rey->ray[y].step[y];
 	}
 	rey->ray[y].wface = 2 * rey->signy;
-	rey->ray[y].dis = sqrt(pow(rey->ray[y].cross[x] - rey->pos[x], 2) + pow(rey->ray[y].cross[y] - rey->pos[y], 2));
+	rey->ray[y].dis = sqrt(pow(rey->ray[y].cross[x] - rey->pos[x], 2)
+			+ pow(rey->ray[y].cross[y] - rey->pos[y], 2));
 }

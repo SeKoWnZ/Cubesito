@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:02:10 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/11 20:02:14 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:15:36 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_it(t_cub *lil_cub)
 	free(lil_cub->params);
 	free(lil_cub->player);
 }
+
 void	free_nano(char *error, t_cub *cub)
 {
 	int	i;

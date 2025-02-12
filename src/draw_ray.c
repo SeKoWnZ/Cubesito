@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:01:51 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/11 20:01:54 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:15:15 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@ int	get_pix(mlx_texture_t *wall, t_lil_ray *ray, int y_pos)
 	x_pos = (int)(ray->pix * (wall->width - 1));
 	y_tex = (int)(y_pos * scale);
 	pos = (x_pos + y_tex * wall->width) * wall->bytes_per_pixel;
-	if (pos < 0 || pos + 3 >= (int)(wall->width * wall->height * wall->bytes_per_pixel))
+	if (pos < 0 || pos + 3 >= (int)(wall->width
+		* wall->height * wall->bytes_per_pixel))
 		return (0);
-	return (wall->pixels[pos] << 24 |
-			wall->pixels[pos + 1] << 16 |
-			wall->pixels[pos + 2] << 8 |
-			wall->pixels[pos + 3]);
+	return (wall->pixels[pos] << 24
+		| wall->pixels[pos + 1] << 16
+		| wall->pixels[pos + 2] << 8
+		| wall->pixels[pos + 3]);
 }
 
-void	wall_to_screen(mlx_texture_t *wall, t_lil_ray *ray, mlx_image_t *frame, int i)
+void	w_to_scr(mlx_texture_t *wall, t_lil_ray *ray, mlx_image_t *frame, int i)
 {
 	int	y_pos;
 	int	y_max;
-	int y_min;
+	int	y_min;
 
 	if (ray->dis < 0.01)
 		ray->dis = 0.01;
@@ -55,11 +56,11 @@ void	draw_ray(t_cub *cub, t_lil_ray *ray, int r, int i)
 {
 	ray->pix = ray->cross[r] - (int)ray->cross[r];
 	if (ray->wface == -2)
-		wall_to_screen(cub->params->so, ray, cub->frame, i);
+		w_to_scr(cub->params->so, ray, cub->frame, i);
 	else if (ray->wface == 2)
-		wall_to_screen(cub->params->no, ray, cub->frame, i);
+		w_to_scr(cub->params->no, ray, cub->frame, i);
 	else if (ray->wface == -1)
-		wall_to_screen(cub->params->ea, ray, cub->frame, i);
+		w_to_scr(cub->params->ea, ray, cub->frame, i);
 	else if (ray->wface == 1)
-		wall_to_screen(cub->params->we, ray, cub->frame, i);
+		w_to_scr(cub->params->we, ray, cub->frame, i);
 }

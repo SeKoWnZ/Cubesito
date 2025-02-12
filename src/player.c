@@ -6,7 +6,7 @@
 /*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:05:02 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/11 20:05:11 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:41:08 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	rad_convertor(double deg)
 
 void	init_player(t_cub *lil_cub)
 {
-	int i;
+	int	i;
 	int	j;
 
 	j = -1;

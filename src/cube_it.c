@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_it.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:01:03 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/11 20:01:07 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:59:19 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ceilingfloor(t_cub *cub, mlx_image_t *frame, int *i)
 	int	j;
 
 	j = 0;
-	while (j < W_HEIGHT/2)
+	while (j < W_HEIGHT / 2)
 	{
 		mlx_put_pixel(frame, *i, j, cub->params->c);
 		j++;
@@ -37,12 +37,11 @@ void	cube_it(t_cub *cub)
 
 	i = 0;
 	ang_step = rad_convertor((FOV + 0.0) / (W_WIDTH + 0.0));
-	//ray_ang = fmod(cub->player->pang - rad_convertor(FOV / 2) + 2 * M_PI, 2 * M_PI);
 	if (cub->player->pang - rad_convertor(FOV / 2) < 0)
 		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
 	else
 		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
-	while(i < W_WIDTH)
+	while (i < W_WIDTH)
 	{
 		ceilingfloor(cub, cub->frame, &i);
 		raycast(cub, ray_ang, &i);

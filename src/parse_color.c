@@ -6,7 +6,7 @@
 /*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:04:42 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/11 20:04:45 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:40:06 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ int	color_allnums_ok(char *color)
 	while (color[i])
 	{
 		if (!ft_strchr(",1234567890", color[i]))
-			return(1);
+			return (1);
 		else if (color[i] == ',')
 			n_comma++;
 		i++;
 	}
 	if (n_comma != 2)
-		return(1);
-	return(0);
+		return (1);
+	return (0);
 }
 
-int color_set(char **nums, int rgb[3])
+int	color_set(char **nums, int rgb[3])
 {
 	int	i;
 
@@ -52,34 +52,34 @@ int color_set(char **nums, int rgb[3])
 		{
 			rgb[i] = ft_atoi(nums[i]);
 			if (rgb[i] < 0 || rgb[i] > 255)
-				return(1);
+				return (1);
 		}
 		else
-			return(1);
+			return (1);
 	}
-	return(0);
+	return (0);
 }
 
 int	save_color(int *c, char *color)
 {
 	char	**nums;
 	int		rgb[3];
-	
+
 	if (*c != -1)
 		return (1);
 	while (*color && *color == ' ')
 		color++;
 	if (color_allnums_ok(color))
-		return(1);
+		return (1);
 	nums = ft_split(color, ',');
 	if (!nums)
-		return(1);
+		return (1);
 	if (color_set(nums, rgb))
 	{
 		free_double_p(nums);
-		return(1);
+		return (1);
 	}
 	free_double_p(nums);
 	*c = get_rgba(rgb[0], rgb[1], rgb[2], 255);
-	return(0);
+	return (0);
 }

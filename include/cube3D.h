@@ -9,8 +9,8 @@
 
 #define y 0
 #define x 1
-#define W_WIDTH  800
-#define W_HEIGHT 600
+#define W_WIDTH  1024
+#define W_HEIGHT 768
 #define FOV 60
 
 typedef struct s_params

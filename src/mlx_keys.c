@@ -3,28 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:02:40 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/11 20:02:43 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:18:16 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube3D.h>
 
-void move_player(t_cub *cub, double mov_x, double mov_y)
+void	move_player(t_cub *cub, double mov_x, double mov_y)
 {
 	cub->player->pox += mov_x / 50.0;
-	if (cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox - 0.1)] == '1'
-		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox + 0.1)] == '1'
-		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox - 0.1)] == '1'
-		|| cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox + 0.1)] == '1')
+	if (cub->params->map[(int)(cub->player->poy - 0.1)]
+		[(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)]
+		[(int)(cub->player->pox + 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)]
+		[(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy - 0.1)]
+		[(int)(cub->player->pox + 0.1)] == '1')
 		cub->player->pox -= mov_x / 50.0;
 	cub->player->poy += mov_y / 50.0;
-	if (cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox - 0.1)] == '1'
-		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox + 0.1)] == '1'
-		|| cub->params->map[(int)(cub->player->poy + 0.1)][(int)(cub->player->pox - 0.1)] == '1'
-		|| cub->params->map[(int)(cub->player->poy - 0.1)][(int)(cub->player->pox + 0.1)] == '1')
+	if (cub->params->map[(int)(cub->player->poy - 0.1)]
+		[(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)]
+		[(int)(cub->player->pox + 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy + 0.1)]
+		[(int)(cub->player->pox - 0.1)] == '1'
+		|| cub->params->map[(int)(cub->player->poy - 0.1)]
+		[(int)(cub->player->pox + 0.1)] == '1')
 		cub->player->poy -= mov_y / 50.0;
 }
 
@@ -45,9 +53,11 @@ void	key_controls(t_cub *cub)
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_S))
 		move_player(cub, -cos(cub->player->pang), sin(cub->player->pang));
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_A))
-		move_player(cub, -cos(cub->player->pang + M_PI / 2), sin(cub->player->pang + M_PI / 2));
+		move_player(cub, -cos(cub->player->pang + M_PI / 2),
+			sin(cub->player->pang + M_PI / 2));
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_D))
-		move_player(cub, cos(cub->player->pang + M_PI / 2), -sin(cub->player->pang + M_PI / 2));
+		move_player(cub, cos(cub->player->pang + M_PI / 2),
+			-sin(cub->player->pang + M_PI / 2));
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window((mlx_t *)cub->mlx);
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT))

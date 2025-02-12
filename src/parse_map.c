@@ -6,7 +6,7 @@
 /*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:04:54 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/11 20:04:57 by jose-gon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:40:40 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_params(t_cub *lil_cub)
 {
-	char **params;
+	char	**params;
 
 	if (two_hi_n(lil_cub->map))
 		error_exit(E_NLINE, lil_cub);
@@ -25,7 +25,7 @@ void	check_params(t_cub *lil_cub)
 	free_double_p(params);
 }
 
-void read_map(t_cub *lil_cub, int fd)
+void	read_map(t_cub *lil_cub, int fd)
 {
 	char	*tmp;
 	char	*buffer;
@@ -54,7 +54,7 @@ void read_map(t_cub *lil_cub, int fd)
 
 void	parse_map(t_cub *lil_cub, char *arg)
 {
-	int fd;
+	int	fd;
 
 	if (ft_strcmp(".cub", &arg[ft_strlen(arg) - 4]))
 		error_exit(E_FORMAT, lil_cub);
