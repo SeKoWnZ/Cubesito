@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:02:10 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/20 20:12:17 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:18:11 by sarajime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cube3D.h>
+#include <cube3D_bonus.h>
 
 void	free_double_p(char **p)
 {
@@ -43,6 +43,18 @@ void	free_it(t_cub *lil_cub)
 		mlx_terminate(lil_cub->mlx);
 	free(lil_cub->params);
 	free(lil_cub->player);
+}
+
+void	free_nano(char *error, t_cub *cub)
+{
+	int	i;
+
+	if (cub->params->t_hud)
+		mlx_delete_texture(cub->params->t_hud);
+	i = -1;
+	while (++i < 46 && cub->params->texture[i])
+		mlx_delete_texture(cub->params->texture[i]);
+	error_exit(error, cub);
 }
 
 int	error_free(char *error, t_cub *lil_cub, char **free_p)

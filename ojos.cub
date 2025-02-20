@@ -3,7 +3,7 @@ F  42,231,0
 
 EA ./textures/002.png
 
-C      0,98,241
+C      255,0,0
 NO ./textures/001.png
 WE ./textures/002.png
 

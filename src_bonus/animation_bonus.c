@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animation.c                                        :+:      :+:    :+:   */
+/*   animation_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:00:32 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/12 18:02:06 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:16:22 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cube3D.h>
+#include <cube3D_bonus.h>
 
 void	rotate(t_cub *cub)
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3D.h                                           :+:      :+:    :+:   */
+/*   cube3D_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jose-gon <jose-gon@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:20:03 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/20 20:14:27 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:16:41 by jose-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef CUBE3D_BONUS_H
+# define CUBE3D_BONUS_H
 
 # include <libft.h>
 # include <MLX42.h>
@@ -31,6 +31,10 @@ typedef struct s_params
 	mlx_texture_t	*so;
 	mlx_texture_t	*ea;
 	mlx_texture_t	*we;
+	mlx_texture_t	*texture[46];
+	mlx_image_t		*img[46];
+	mlx_texture_t	*t_hud;
+	mlx_image_t		*i_hud;
 	int				c;
 	int				f;
 	int				max[2];
@@ -88,6 +92,9 @@ typedef struct s_cub
 # define E_NLINE "Error: Empty line on map or space on param\n"
 # define E_MLX "Error"
 
+# define SOURCE "./textures/PNGS/"
+# define SOURCE2 ".png"
+
 //INIT FUNCT
 
 void	init_cube(t_cub *lil_cub);
@@ -100,6 +107,8 @@ int		mlx_initialize(t_cub *cube);
 void	mlx_run(t_cub *lil_cub);
 void	gameloop(void *param);
 void	cube_it(t_cub *cub);
+void	animation_init(t_cub *cube);
+void	rotate(t_cub *cube);
 
 //RAY THINGS
 
@@ -129,5 +138,6 @@ int		error_free(char *error, t_cub *lil_cub, char **free_p);
 //FREE
 
 void	free_double_p(char **p);
+void	free_nano(char *error, t_cub *cub);
 
 #endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3D.c                                           :+:      :+:    :+:   */
+/*   cube3D_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:01:23 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/20 20:18:24 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:17:55 by sarajime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cube3D.h>
+#include <cube3D_bonus.h>
 
 int	main(int argc, char **argv)
 {
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		init_cube(&lil_cub);
 		parse_map(&lil_cub, argv[1]);
 		mlx_run(&lil_cub);
-		error_exit(NULL, &lil_cub);
+		free_nano(NULL, &lil_cub);
 	}
 	else
 	{

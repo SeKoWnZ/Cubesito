@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube_it.c                                          :+:      :+:    :+:   */
+/*   cube_it_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:01:03 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/20 21:11:42 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:17:50 by sarajime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cube3D.h>
+#include <cube3D_bonus.h>
 
 void	ceilingfloor(t_cub *cub, mlx_image_t *frame, int *i)
 {

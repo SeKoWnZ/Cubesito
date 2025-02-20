@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   raycast_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:05:26 by jose-gon          #+#    #+#             */
-/*   Updated: 2025/02/20 20:59:14 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:19:02 by sarajime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cube3D.h>
+#include <cube3D_bonus.h>
 
 void	init_rey(t_cub *cub, t_ray *rey, double ray_ang)
 {
