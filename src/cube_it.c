@@ -6,7 +6,7 @@
 /*   By: sarajime <sarajime@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 20:01:03 by sarajime          #+#    #+#             */
-/*   Updated: 2025/02/12 18:02:13 by sarajime         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:44:34 by sarajime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ void	cube_it(t_cub *cub)
 
 	i = 0;
 	ang_step = rad_convertor((FOV + 0.0) / (W_WIDTH + 0.0));
-	if (cub->player->pang - rad_convertor(FOV / 2) < 0)
-		ray_ang = cub->player->pang + rad_convertor(360 - FOV / 2);
+	if (cub->player->pang + rad_convertor(FOV / 2) > 2 * M_PI)
+		ray_ang = cub->player->pang + rad_convertor(FOV / 2 - 360);
 	else
-		ray_ang = cub->player->pang - rad_convertor(FOV / 2);
+		ray_ang = cub->player->pang + rad_convertor(FOV / 2);
 	while (i < W_WIDTH)
 	{
 		ceilingfloor(cub, cub->frame, &i);
 		raycast(cub, ray_ang, &i);
-		if (ray_ang + ang_step >= 2 * M_PI)
-			ray_ang = ray_ang - (2 * M_PI) + ang_step;
+		if (ray_ang - ang_step < 0)
+			ray_ang = ray_ang + (2 * M_PI) - ang_step;
 		else
-			ray_ang = ray_ang + ang_step;
+			ray_ang = ray_ang - ang_step;
 		i++;
 	}
 }
